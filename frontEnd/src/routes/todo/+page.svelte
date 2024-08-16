@@ -1,7 +1,11 @@
 <script>
+	// @ts-nocheck
+
 	import TodoListSection from './TodoListSection.svelte';
 	import { v4 as uuid } from 'uuid';
 	import { afterNavigate } from '$app/navigation';
+
+	import Header from './Header.svelte';
 
 	let todoInput, todoItemsWrapper, toDoList;
 	let todoItems = [];
@@ -128,37 +132,36 @@
 	}
 </script>
 
-<body>
-	<main class="prose m-auto h-screen">
-		<div bind:this={todoItemsWrapper} class="todoList-wrapper">
-			<TodoListSection
-				bind:this={toDoList}
-				{disabledItems}
-				{isLoading}
-				{loadingError}
-				{todoItems}
-				on:toggletodo={handleToggleTodo}
-				on:afterUpdate={todoListAfterUpdate}
-				on:deleTodo={handleDeleteTodo}
-			/>
-		</div>
-		<form on:submit|preventDefault={addTodo}>
-			<input
-				type="text"
-				bind:value={todoInput}
-				placeholder="ToDo title"
-				class="mt-10 input input-bordered w-full"
-			/>
-			<button class="mt-5 btn btn-primary w-full" type="submit" disabled={!todoInput}>
-				{#if isAdding}<span class="loading loading-spinner"></span>
-				{:else}
-					Add ToDo
-				{/if}
-			</button>
-		</form>
-		<a href="/">Home</a>
-	</main>
-</body>
+<Header></Header>
+<main class="prose m-auto h-screen">
+	<div bind:this={todoItemsWrapper} class="todoList-wrapper">
+		<TodoListSection
+			bind:this={toDoList}
+			{disabledItems}
+			{isLoading}
+			{loadingError}
+			{todoItems}
+			on:toggletodo={handleToggleTodo}
+			on:afterUpdate={todoListAfterUpdate}
+			on:deleTodo={handleDeleteTodo}
+		/>
+	</div>
+	<form on:submit|preventDefault={addTodo}>
+		<input
+			type="text"
+			bind:value={todoInput}
+			placeholder="ToDo title"
+			class="mt-10 input input-bordered w-full"
+		/>
+		<button class="mt-5 btn btn-primary w-full bg-base-content" type="submit" disabled={!todoInput}>
+			{#if isAdding}<span class="loading loading-spinner"></span>
+			{:else}
+				Add ToDo
+			{/if}
+		</button>
+	</form>
+	<a href="/">Home</a>
+</main>
 
 <style>
 	main {
@@ -171,6 +174,6 @@
 		height: calc(50vh);
 		/* border: 1px solid black; */
 		border-radius: 20px;
-		background-color: white;
+		/* background-color: white; */
 	}
 </style>

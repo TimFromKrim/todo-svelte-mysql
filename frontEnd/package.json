@@ -36,6 +36,7 @@
 	"type": "module",
 	"dependencies": {
 		"lucide-svelte": "^0.427.0",
+		"theme-change": "^2.5.0",
 		"uuid": "^10.0.0"
 	}
 }
