@@ -78,7 +78,7 @@
 						<span class="ml-5 mr-5">{todoItem.title}</span>
 					</div>
 					<button
-						class="btn p-2 btn-warning"
+						class="btn p-2 btn-error bg-warning border-transparent"
 						on:click={() => {
 							console.log(todoItem.id);
 							handleDeleteTodo(todoItem.id);

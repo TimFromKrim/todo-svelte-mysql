@@ -153,7 +153,7 @@
 			placeholder="ToDo title"
 			class="mt-10 input input-bordered w-full"
 		/>
-		<button class="mt-5 btn btn-primary w-full bg-base-content" type="submit" disabled={!todoInput}>
+		<button class="mt-5 btn btn-primary w-full" type="submit" disabled={!todoInput}>
 			{#if isAdding}<span class="loading loading-spinner"></span>
 			{:else}
 				Add ToDo
